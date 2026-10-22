@@ -103,7 +103,7 @@
              */
             colorTheme.value = localStorage.getItem("mode");
             iconMode.value = `fa ${localStorage.getItem("iconMode")} pull-right`;
-            document.getElementById("icon-text").innerHTML = localStorage.getItem("iconText");
+            document.getElementById("icon-text").textContent = localStorage.getItem("iconText");
         }
 
         /**
@@ -113,7 +113,7 @@
         function clearLocalStorage() {
             localStorage.clear();
             document.body.classList.value = "light-theme";
-            document.getElementById("icon-text").innerHTML = "Light Mode";
+            document.getElementById("icon-text").textContent = "Light Mode";
             document.getElementById("icon-mode").classList.value = "fa fa-toggle-off pull-right";
         }
     </script>

@@ -104,6 +104,12 @@
 
         };
 
+        function escapeText(value) {
+            const text = document.createElement('span');
+            text.textContent = String(value);
+            return text.innerHTML;
+        }
+
         function buildHTMLString(res, format) {
             let tableString = `<table id='bookTable'><tr><th>ISBN</th><th>Title</th><th>Description</th><th>Pages</th><th>Authors</th></tr>`;
             let ulString = '';
@@ -130,16 +136,16 @@
                 }
 
                 ulString += `
-                <li><b>ISBN:</b> ${book.isbn}</li>
-                <li><b>Title:</b> ${book.title}</li>
-                <li><b>Description:</b> ${book.description}</li>
-                <li><b>Pages:</b> ${book.pages}</li>
-                <li><b>Authors:</b> ${book.authors}</li>`;
+                <li><b>ISBN:</b> ${escapeText(book.isbn)}</li>
+                <li><b>Title:</b> ${escapeText(book.title)}</li>
+                <li><b>Description:</b> ${escapeText(book.description)}</li>
+                <li><b>Pages:</b> ${escapeText(book.pages)}</li>
+                <li><b>Authors:</b> ${escapeText(book.authors)}</li>`;
 
                 tableString += `<tr>
-                    <td><a href="#" class="isbn-link">${book.isbn}</a></td>
-                    <td>${book.title}</td><td>${book.description}</td>
-                     <td>${book.pages}</td><td>${book.authors}</td></tr>`;
+                    <td><a href="#" class="isbn-link">${escapeText(book.isbn)}</a></td>
+                    <td>${escapeText(book.title)}</td><td>${escapeText(book.description)}</td>
+                     <td>${escapeText(book.pages)}</td><td>${escapeText(book.authors)}</td></tr>`;
             }
             tableString += `</table>`;
 
