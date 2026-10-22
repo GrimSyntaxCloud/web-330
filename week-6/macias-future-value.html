@@ -151,11 +151,13 @@
 
             else {
                 errorLogEl.innerHTML = "";
-                let errorLogMessage = `<ul>`;
-                for (let msg of errorLog) {
-                    errorLogMessage += `<li>${msg}</li>`;
+                const list = document.createElement('ul');
+                for (const msg of errorLog) {
+                    const item = document.createElement('li');
+                    item.textContent = msg;
+                    list.append(item);
                 }
-                document.getElementById('errorLog').innerHTML = errorLogMessage + '</ul>';
+                errorLogEl.replaceChildren(list);
             }
         };
 

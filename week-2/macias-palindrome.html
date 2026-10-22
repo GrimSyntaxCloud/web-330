@@ -87,6 +87,12 @@
             return (phrase === reverse(phrase)) ? true : false;
         }
 
+        function escapeText(value) {
+            const text = document.createElement('span');
+            text.textContent = String(value);
+            return text.innerHTML;
+        }
+
         document.getElementById("btnCheckPhrase").onclick = function () {
             let txtPhrase = document.getElementById("txtPhrase").value.toLowerCase();
             let assignResults = document.getElementById("assign-results-header");
@@ -95,17 +101,17 @@
             let reversedPhrase = reverse(txtPhrase);
             let header = "<p>";
                 header += "Date: " + today + "<br>";
-                header += "Original Phrase: " + txtPhrase + "<br>";
-                header += " Reversed Phrase: " + reversedPhrase + "<br>";
+                header += "Original Phrase: " + escapeText(txtPhrase) + "<br>";
+                header += " Reversed Phrase: " + escapeText(reversedPhrase) + "<br>";
                 header += " Phrase length: " + len;
                 header += "</p>";
 
             assignResults.innerHTML = header;
 
             if (isPalindrome(txtPhrase)) {
-                document.getElementById("assignResults").innerHTML = txtPhrase +" <strong><u>is</u></strong> a palindrome!";
+                document.getElementById("assignResults").innerHTML = escapeText(txtPhrase) +" <strong><u>is</u></strong> a palindrome!";
             } else {
-                document.getElementById("assignResults").innerHTML = txtPhrase +" <strong><u>is not</u></strong> a palindrome!";
+                document.getElementById("assignResults").innerHTML = escapeText(txtPhrase) +" <strong><u>is not</u></strong> a palindrome!";
             }
         }
 
